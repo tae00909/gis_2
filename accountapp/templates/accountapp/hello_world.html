@@ -2,8 +2,25 @@
 
 {% block content %}
 
+    <style>
+        .testing {
+            background-color: yellow;
+            margin: 1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: .5rem;
+        }
+    </style>
+
     <div style="height: 20rem; background-color: aqua; margin: 2rem; border-radius: 1rem">
         <h1>test</h1>
+    {# 인라인과 인라인 블럭의 차이는 인라인 블럭은 인라인에서 불가능한  너비, 높이, 마진, 패딩 속성 조절 가능  #}
+    <div class="testing" style="display: block">block</div>
+    <div class="testing" style="display: inline">inline</div>
+    <div class="testing" style="display: none">none</div>
+    <div class="testing" style="display: inline-block">inline-block</div>
+    <div class="testing"></div>
+
     </div>
 
 {% endblock %}
