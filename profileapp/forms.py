@@ -4,6 +4,7 @@ from profileapp.models import Profile
 
 
 class ProfileCreationForm(ModelForm):
-    class meta:
+    # 메타 정보
+    class Meta:
         model = Profile
-        field = ['image', 'nickname', 'message']
+        fields = ['image', 'nickname', 'message']
