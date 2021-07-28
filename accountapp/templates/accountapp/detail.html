@@ -2,13 +2,31 @@
 
 {% block content %}
 
+{# text-center, m-5는 부트스트랩에서 제공해주는 것이다.#}
+{#    text-center은 중앙정렬, m-5는 마진 5#}
     <div class="text-center mw-500 m-auto">
-        <div class="mt-5">
-            <h4>{{ target_user.username }}</h4>
+        <div class="m-5">
+            {% if target_user.profile %}
+                <img src="{{ target_user.profile.image.url }}"
+                     class="profile_image m-4"
+                     alt="profile image">
+                <h2 class="NNS_B">{{ target_user.profile.nickname }}</h2>
+                <h5>{{ target_user.profile.message }}</h5>
+            {% else %}
+            <h2>
+                <a href="{% url 'profileapp:create' %}">
+                    Create Profile
+                </a>
+            </h2>
+            {% endif %}
         </div>
         <div>
+{#           언제 가입햇는지 #}
             {{ target_user.date_joined }}
         </div>
+{#         요청을 보내는 유저와 account의 user와 같다면#}
+        {% if user == target_user %}
+
         <div>
             <a href="{% url 'accountapp:update' pk=target_user.pk %}">
                 Update Info
@@ -19,6 +37,7 @@
                 Quit
             </a>
         </div>
+        {% endif %}
     </div>
 
 
